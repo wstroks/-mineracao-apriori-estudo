@@ -15,3 +15,6 @@ begin
   return faixa;
 end $$
 delimiter ;
+
+
+select tempo, getfaixatempo(minute(tempo)) from pedidos;

@@ -1,6 +1,11 @@
+
 select min(data_pedido), max(data_pedido) from pedidos;
 
+SET SQL_SAFE_UPDATES = 0
+delete from pedidos.pizzaria where year(data_pedido)>=2015;
+
 select dayname(data_pedido), data_pedido from pedidos;
+
 
 SELECT @@lc_time_names;
 
@@ -9,7 +14,7 @@ SET lc_time_names = 'pt_BR';
 SET lc_time_names = 'en_US';
 
 
-
+SET GLOBAL log_bin_trust_function_creators = 1;
 delimiter $$
 
 create function GetDiaSemana(data_pedido date) returns varchar (10)
@@ -25,3 +30,5 @@ delimiter ;
 
 
 select *, GetDiaSemana(data_pedido) as dia_semana from pedidos
+
+select data_pedido, GetDiaSemana(data_pedido) from pizzaria.pedidos;

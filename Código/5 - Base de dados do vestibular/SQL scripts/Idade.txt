@@ -1,3 +1,7 @@
+update vestibular.socioeconomica  set idade =20 where idade < 14 or idade >80;
+
+SELECT distinct(idade) FROM vestibular.socioeconomica;
+
 delimiter $$
 create function GetFaixaIdade(idade int) returns varchar(20)
 begin
@@ -19,3 +23,6 @@ begin
     return faixa;
 end $$
 delimiter ;
+
+
+select idade, getfaixaidade(idade) from socioeconomica;

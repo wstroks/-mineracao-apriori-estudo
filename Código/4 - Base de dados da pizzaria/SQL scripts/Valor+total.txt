@@ -1,3 +1,6 @@
+select * from pedidos;
+select count(*), valor_total from pedidos group by valor_total
+
 delimiter $$
 create function GetFaixaValor(valor_total float) returns varchar (10)
 begin
@@ -27,3 +30,7 @@ begin
   return faixa;
 end $$
 delimiter ;
+
+select valor_total, GetFaixaValor(valor_total) from pedidos;
+
+select count(valor_total), GetFaixaValor(valor_total) from pedidos group by GetFaixaValor(valor_total);

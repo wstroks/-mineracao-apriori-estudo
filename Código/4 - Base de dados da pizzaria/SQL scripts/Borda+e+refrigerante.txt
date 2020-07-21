@@ -27,3 +27,7 @@ begin
     return refrigerante;
 end $$
 delimiter ;
+
+
+select valor_borda, GetBorda(valor_borda),
+valor_refrigerante, GetRefrigerante(valor_refrigerante) from pedidos;
